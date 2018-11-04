@@ -25,6 +25,17 @@ body, html {
 	cursor: pointer;
 }
 
+#text {
+	width: 100%;
+	background-color: white;
+	height: 30px;
+	margin-top: 20px;
+	margin-bottom: 0;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 30px;
+}
+
 #number {
 	width: 100%;
 	background-color: white;

@@ -1,4 +1,3 @@
-
 function sendGet(route, cb) {
 	var url = API_BASE_URL + route;
 	$('#requests-content').append('GET ' + url);
@@ -26,9 +25,22 @@ $(document).ajaxError(function(event, jqxhr, settings, error) {
 	$('#responses-content').append('Error status ' + jqxhr.status + ' <br/>');
 });
 
+$("#text").bind("change", function(){
+	rt = '/input' + '?input=' + $("#text").val();
+	sendPost(rt, {}, function() {
+		sendGet('/code', function(data) {
+			$('#text').text(data);
+		});
+	});
+});
+
 $(function() {
 	sendGet('/counter', function(data) {
 		$('#number').text(data);
+	});
+	
+	sendGet('/code', function(data) {
+		$('#text').text(data);
 	});
 
 	$('#add').click(function() {
@@ -46,4 +58,20 @@ $(function() {
 			});
 		});
 	});
+
+	$('#enc').click(function() {
+		sendPost('/caesarian_enc', {}, function() {
+			sendGet('/code', function(data) {
+				$('input:text').val(data);
+			});
+		});
+	});
+
+	$('#dec').click(function() {
+		sendPost('/caesarian_dec', {}, function() {
+			sendGet('/code', function(data) {
+				$('input:text').val(data);
+			});
+		});
+	});	
 });
