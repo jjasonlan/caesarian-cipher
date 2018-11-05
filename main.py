@@ -36,7 +36,7 @@ def caesarian_encode():
 	global code
 	global counter
 	# encoded = ''
-	encoded = ''.join(map(lambda c: chr(ord('a') +  (ord(c) - ord('a') + counter)%26), code.lower()))
+	encoded = ''.join(map(lambda c: chr(ord('a') +  (ord(c) - ord('a') + counter)%26) if c != ' ' else ' ', code.lower()))
 	# for s in code:
 	# 	if s == ' ':
 	# 		encoded += ' '
@@ -48,7 +48,7 @@ def caesarian_encode():
 def caesarian_decode():
 	global code
 	global counter
-	decoded = ''.join(map(lambda c: chr(ord('a') + (ord(c) - ord('a') - counter)%26), code.lower()))
+	decoded = ''.join(map(lambda c: chr(ord('a') + (ord(c) - ord('a') - counter)%26) if c != ' ' else ' ', code.lower()))
 	# decoded = ''
 	# for s in code:
 	# 	if s == ' ':
